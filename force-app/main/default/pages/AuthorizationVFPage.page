@@ -1,0 +1,18 @@
+<apex:page id="authPage" lightningStyleSheets="true" showHeader="true" cspHeader="false">
+  <apex:includeLightning/>
+  <div id="authCmp">
+  </div>
+  <script>
+    window.onload = function(){
+      let code = '{!$CurrentPage.parameters.code}';
+      //let code = "Testing Code";
+      if(code){
+        $Lightning.use("c:AuthorizationAuraApplication", function(){
+          $Lightning.createComponent("c:AuthorizationAuraComponent",{authCode:code},"authCmp", function(cmp){
+            console.log("Component Created", code);
+          });
+        });
+      }
+    }
+  </script>
+</apex:page>

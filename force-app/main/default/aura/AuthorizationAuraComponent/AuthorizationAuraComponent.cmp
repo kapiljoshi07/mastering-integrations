@@ -1,0 +1,8 @@
+<aura:component implements="flexipage:availableForAllPageTypes,force:appHostable, lightning:isUrlAddressable"
+  access="global" controller="AuthorizationController">
+  <aura:attribute name="authCode" type="String" />
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+  <p>
+    {!v.authCode}
+  </p>
+</aura:component>
