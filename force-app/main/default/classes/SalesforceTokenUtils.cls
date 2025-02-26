@@ -28,15 +28,15 @@ public with sharing class SalesforceTokenUtils {
                 if(String.isBlank((String)fieldWithValuesMap.get('refresh_token__c'))){
                     fieldWithValuesMap.put('refresh_token__c', refreshToken);
                 }
-                if(fieldWithValuesMap.size()>0){
-                    String fullName ='Auhtorization_Config.'+System.Label.Salesforce_prod_authorization_config;
-                    String label = System.Label.Salesforce_prod_authorization_config;
-                    CreateUpdateMetadataUtils.createUpdateMetadata(fullName, label, fieldWithValuesMap);
-                }
             }catch(System.CalloutException calloutEx){
                 System.debug(calloutEx.getMessage());
             }catch(System.Exception ex){
                 System.debug(ex.getMessage());
+            }
+            if(fieldWithValuesMap.size()>0){
+                String fullName ='Auhtorization_Config.'+System.Label.Salesforce_prod_authorization_config;
+                String label = System.Label.Salesforce_prod_authorization_config;
+                CreateUpdateMetadataUtils.createUpdateMetadata(fullName, label, fieldWithValuesMap);
             }
         }
     }
